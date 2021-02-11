@@ -2,14 +2,22 @@
 <html>
 
 <body>
-    <h2>SOP example 2</h2>
-    <iframe id="telenet" src="https://www.telenet.be"></iframe>
+    <h2>Using the XMLHttpRequest Object</h2>
+    <div id="demo">
+        <button type="button" onclick="loadXMLDoc()">Get Content</button>
+    </div>
     <script>
-        window.onload = function() {
-            setTimeout(function() {
-                document.getElementById('telenet').contentWindow.innerHTML;
-            }, 5000)
-        };
+        function loadXMLDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML =
+                        this.responseText;
+                }
+            };
+            xhttp.open("GET", "REPLACE_WITH_LINK_TO_YOUR_API", true);
+            xhttp.send();
+        }
     </script>
 </body>
 
